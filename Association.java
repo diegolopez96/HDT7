@@ -1,21 +1,21 @@
 /* 	Universidad del Valle de Guatemala
- *  	Algoritmos y Estructura de Datos
- *  	Pedro Antonio Garcia Morales	 15409
- *  	Diego Lopez 			 141222
+ *  Algoritmos y Estructura de Datos
+ *  	Pedro Antonio Garcia Morales 15409
+ *  	Diego Lopez 
  *  	Hoja de Trabajo 7. Binary Tree
 */
 
+	/**
+     * Clase Association
+     */
 public class Association<k,v> {
-	//Variables
+
+	/**
+     * atributos para hacer la asociacion entre ingles y espanol 
+     */
 	private k ingles;
 	private v espanol;
 	
-	public Association() {
-		ingles = null;
-		espanol = null;
-	}
-	
-	//Set y gets de las variables
 	public void setIngles(k string){
 		ingles = string;
 	}
@@ -31,6 +31,4 @@ public class Association<k,v> {
 	public v getEspanol(){	
 		return espanol;
 	}
-        
-	
 }

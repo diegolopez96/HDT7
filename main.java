@@ -1,38 +1,33 @@
 /* 	Universidad del Valle de Guatemala
  *  Algoritmos y Estructura de Datos
- *  Pedro Antonio Garcia Morales       15409
- *  Diego Lopez                        141222
- *  Hoja de Trabajo 7. Binary Tree
+ *  	Pedro Antonio Garcia Morales 15409
+ *  	Diego Lopez 
+ *  	Hoja de Trabajo 7. Binary Tree
 */
 
-//Se importan varias funciones necesarias para que el programa funcione 
 import java.io.*;
 import java.util.*;
 
-/**
- *
- *
- *  
- */
-
 public class main {
-    
-    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        //Se crean todas las variables necesarios para poder traducir la oración 
         Scanner scan;
         Binary_Tree tree = new Binary_Tree();
         scan = new Scanner (System.in);
         String traduccion = " ";
         
-        //Se lee el archivo texto.txt
+        /**
+         * Try-catch para leer la oracion a traducir
+         */
         try{
             FileInputStream doc = new FileInputStream("C:\\Users\\usuario1\\Desktop\\Nueva carpeta\\HDT7\\src\\texto.txt");
             DataInputStream ent = new DataInputStream(doc);
             BufferedReader buffer = new BufferedReader(new InputStreamReader(ent));
             String strLinea;
          
-            while ((strLinea = buffer.readLine()) != null)   {
+            while ((strLinea = buffer.readLine()) != null){
                 traduccion = traduccion+strLinea+" ";
             }
             ent.close();
@@ -44,8 +39,9 @@ public class main {
         List<String> palabras = new ArrayList<>();
         int countLineas = 0;
         
-        
-        //Se lee el archivo diccionario.txt
+        /**
+         * try-catch para leer el diccionario que contiene las palabras
+         */
         try{
             FileInputStream doc2 = new FileInputStream("C:\\Users\\usuario1\\Desktop\\Nueva carpeta\\HDT7\\src\\diccionario.txt");
             DataInputStream ent2 = new DataInputStream(doc2);
@@ -62,8 +58,9 @@ public class main {
             System.out.println("No se puede leer el documento" + e.getMessage());
         }
         
-        
-        //For que va leyendo palabra por palabra y va cambiando la palabra de ingles a español
+        /**
+         * Ciclo para leer todas las lineas de diccionario
+         */
         for(int i = 0; i < countLineas; i++ )
         {   Association<String,String> valor = new Association<>();
             String linea1;
@@ -78,7 +75,9 @@ public class main {
             valor.setEspanol(linea1.substring(coma+1,linea1.length()));
             tree.addNodo(valor);
         }
-        
+        /**
+         * Agrega las palabras de diccionario a un arreglo
+         */
         int inicio = 0;
         int N_Palabras = 0;
         List<String> Texto = new ArrayList<>();
@@ -86,33 +85,31 @@ public class main {
                     if(Character.toString(traduccion.charAt(n)).equals(" ")){
                         Texto.add(traduccion.substring(inicio, n));
                         inicio = n;
-                        N_Palabras = N_Palabras+1;
-                        
+                        N_Palabras = N_Palabras+1;   
                     }
                  }
         
-        //Se le agrega * a las palabras traducidas 
-        String word = " ";
+        String Aarbol = " ";
         for(int n = 0; n<N_Palabras; n++){
           	 String palabra1 = tree.Buscar(Texto.get(n).replace(" ",""));
              String palabra2 = Texto.get(n).replace(" ","");
              if(palabra1.equals(palabra2)){
-                 word = word+"*"+Texto.get(n).replace(" ","")+"*";  
+                 Aarbol = Aarbol+"*"+Texto.get(n).replace(" ","")+"*";  
              }
              else{
-                 word = word+tree.Buscar(Texto.get(n).replace(" ","")); 
+                 Aarbol = Aarbol+tree.Buscar(Texto.get(n).replace(" ","")); 
              }
         }
         
-        
-        //Se imprime la oración ingresada y su traducción 
+        /**
+         * Imprime los resultados
+         */
+        System.out.println("Arbol: ");    
+        System.out.println(tree.Imp_Arbol());
         System.out.println(); 
         System.out.println("El texto ingresado es: ");
         System.out.println(traduccion);
         System.out.println("El texto traducido es: ");
-        System.out.println(word);
-        
-       
-    }
-    
+        System.out.println(Aarbol); 
+    }   
 }

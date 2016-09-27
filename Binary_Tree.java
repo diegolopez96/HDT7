@@ -1,18 +1,25 @@
 /* 	Universidad del Valle de Guatemala
- *  	Algoritmos y Estructura de Datos
- *  	Pedro Antonio Garcia Morales 	15409
- *  	Diego Lopez 			141222
+ *  Algoritmos y Estructura de Datos
+ *  	Pedro Antonio Garcia Morales 15409
+ *  	Diego Lopez 
  *  	Hoja de Trabajo 7. Binary Tree
 */
 
+	/**
+     * Clase Binary_Tree
+     */
 public class Binary_Tree<E> {
     
-     //Variables
-     private Nodo node;
+	/**
+     * Atributos
+     */
+	 private Nodo node;
      private String string;
      private String btree;
  
-    //Constructor
+     /**
+      * Metodo para agregar un nodo. 
+      */
     public  void addNodo(Association<String,String> valueAdd){
         if(node == null){
             node = new Nodo(valueAdd);
@@ -22,14 +29,15 @@ public class Binary_Tree<E> {
         }  
     }
 
-    //Método que busca las palabras para traducir
+    /**
+     * Metodo para buscar una palabra 
+     */
     public String Buscar(String cadena){
         string = cadena;
         B_Help(node);
         return string;   
        }
     
-   //Método que ayuda a buscar las palabras de ingles a español en el diccionario 
    public void B_Help(Nodo nodo){
        if(nodo == null) {
     	   return  ;
@@ -43,8 +51,21 @@ public class Binary_Tree<E> {
        }
        B_Help(nodo.der);
    }     
-    
-
+   
+   /**
+    * Metodos para Ordenar el arbol y caracteristicas para imprimirlo
+    */
+   public  String Imp_Arbol(){
+       Ordenado(node);
+       return btree;       
+   }
+   
+   private void Ordenado(Nodo nodo){
+       if(nodo == null){
+    	   return;
+       }
+       Ordenado(nodo.izq);
+       btree = btree+nodo.datos.getIngles()+", "+nodo.datos.getEspanol()+" ";
+       Ordenado(nodo.der);
+   }   
 }
-
-
