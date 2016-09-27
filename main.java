@@ -1,7 +1,7 @@
-/* 	Universidad del Valle de Guatemala
- *  Algoritmos y Estructura de Datos
- *  	Pedro Antonio Garcia Morales 15409
- *  	Diego Lopez 
+/* 	    Universidad del Valle de Guatemala
+ *      Algoritmos y Estructura de Datos
+ *  	Pedro Antonio Garcia Morales    15409
+ *  	Diego Lopez                     141222
  *  	Hoja de Trabajo 7. Binary Tree
 */
 
