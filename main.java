@@ -1,10 +1,11 @@
 /* 	Universidad del Valle de Guatemala
  *  Algoritmos y Estructura de Datos
- *  	Pedro Antonio Garcia Morales 15409
- *  	Diego Lopez 
- *  	Hoja de Trabajo 7. Binary Tree
+ *  Pedro Antonio Garcia Morales       15409
+ *  Diego Lopez                        141222
+ *  Hoja de Trabajo 7. Binary Tree
 */
 
+//Se importan varias funciones necesarias para que el programa funcione 
 import java.io.*;
 import java.util.*;
 
@@ -15,15 +16,16 @@ import java.util.*;
  */
 
 public class main {
-    /**
-     * @param args the command line arguments
-     */
+    
+    
     public static void main(String[] args) {
+        //Se crean todas las variables necesarios para poder traducir la oración 
         Scanner scan;
         Binary_Tree tree = new Binary_Tree();
         scan = new Scanner (System.in);
         String traduccion = " ";
         
+        //Se lee el archivo texto.txt
         try{
             FileInputStream doc = new FileInputStream("C:\\Users\\usuario1\\Desktop\\Nueva carpeta\\HDT7\\src\\texto.txt");
             DataInputStream ent = new DataInputStream(doc);
@@ -42,6 +44,8 @@ public class main {
         List<String> palabras = new ArrayList<>();
         int countLineas = 0;
         
+        
+        //Se lee el archivo diccionario.txt
         try{
             FileInputStream doc2 = new FileInputStream("C:\\Users\\usuario1\\Desktop\\Nueva carpeta\\HDT7\\src\\diccionario.txt");
             DataInputStream ent2 = new DataInputStream(doc2);
@@ -58,6 +62,8 @@ public class main {
             System.out.println("No se puede leer el documento" + e.getMessage());
         }
         
+        
+        //For que va leyendo palabra por palabra y va cambiando la palabra de ingles a español
         for(int i = 0; i < countLineas; i++ )
         {   Association<String,String> valor = new Association<>();
             String linea1;
@@ -85,7 +91,7 @@ public class main {
                     }
                  }
         
-
+        //Se le agrega * a las palabras traducidas 
         String word = " ";
         for(int n = 0; n<N_Palabras; n++){
           	 String palabra1 = tree.Buscar(Texto.get(n).replace(" ",""));
@@ -98,6 +104,8 @@ public class main {
              }
         }
         
+        
+        //Se imprime la oración ingresada y su traducción 
         System.out.println(); 
         System.out.println("El texto ingresado es: ");
         System.out.println(traduccion);
